@@ -1,0 +1,2 @@
+class ConveyingsController < ApplicationController
+end
