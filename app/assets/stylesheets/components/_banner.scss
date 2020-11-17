@@ -1,11 +1,13 @@
 .banner {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(https://images.unsplash.com/photo-1553246969-7dcb4259a87b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(https://images.unsplash.com/photo-1553246969-7dcb4259a87b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
   background-size: cover;
-  background-position: center;
-  padding: 150px 0;
-  height: 300px;
+  background-position: 50% 75%;
+  height: 80vh;
 }
 
+.banner .container {
+  height: 100%;
+}
 .banner h1 {
   margin: 0;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);

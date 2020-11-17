@@ -4,27 +4,26 @@
 </div>
 <%# Banner %>
 <div class="banner">
-  <div class="container">
-    <h1>Pages#home</h1>
-    <p>Find me in app/views/pages/home.html.erb</p>
+  <div class="container d-flex align-content-around flex-wrap">
+    <h1>Sail boats all around the world</h1>
     <%# Searchbar %>
+    <%= render 'shared/search_bar' %>
   </div>
 </div>
 
 <%# Cards %>
 <div class="container">
-  <div class="row">
-    <div class="col-4">
-
-      <!-- Display last 3 conveyings created in DB -->
-      <% @last_three_conveyings.each do |conveying| %>
+  <div class="row my-3">
+    <!-- Display last 3 conveyings created in DB -->
+    <% @last_three_conveyings.each do |conveying| %>
+      <div class="col-4">
         <div class="card">
           <%= conveying.start_location %> > <%= conveying.arrival_location %>
           before <%= conveying.arrival_date %>
           <%= conveying.price %>€
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
-    </div>
   </div>
 </div>
