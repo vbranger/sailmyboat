@@ -1,6 +1,7 @@
 class Conveying < ApplicationRecord
   belongs_to :user
   has_many :bookings
+  has_many_attached :photo
   validates :boat_name, presence: true, uniqueness: true
   validates :boat_type, presence: true
   validates :start_location, presence: true
