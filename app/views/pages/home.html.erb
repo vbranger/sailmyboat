@@ -17,11 +17,32 @@
     <!-- Display last 3 conveyings created in DB -->
     <% @last_three_conveyings.each do |conveying| %>
       <div class="col-4">
+
         <div class="card">
-          <%= conveying.start_location %> > <%= conveying.arrival_location %>
-          before <%= conveying.arrival_date %>
-          <%= conveying.price %>€
+
+          <img src="https://source.unsplash.com/random" alt="boat picture" />
+          <div class="card-infos">
+            <div >
+              <h2><%= conveying.start_location %> > <%= conveying.arrival_location %></h2>
+              <p>before <%= conveying.arrival_date %></p>
+            </div>
+            <h2><%= conveying.price %>€</h2>
+          </div>
+
         </div>
+
+<!-- MY HTML -->
+<!--         <div class="card">
+          <img src="https://source.unsplash.com/random" alt="boat picture">
+
+          <h2> <%= conveying.start_location %> > <%= conveying.arrival_location %></h2>
+          <div class="card-info">
+            <h2>before <%= conveying.arrival_date %></h2>
+            <p><%= conveying.price %>€</p>
+          </div>
+
+        </div> -->
+
       </div>
     <% end %>
 
