@@ -1,5 +1,5 @@
 class ConveyingsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new]
   def index
     @conveyings = policy_scope(Conveying).order(created_at: :desc)
   end
@@ -11,6 +11,7 @@ class ConveyingsController < ApplicationController
 
   def new
     @conveying = Conveying.new
+    authorize @conveying
   end
 
   def create

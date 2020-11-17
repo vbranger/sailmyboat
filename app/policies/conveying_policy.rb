@@ -7,7 +7,12 @@ class ConveyingPolicy < ApplicationPolicy
   def index?
     true
   end
-   def show?
+
+  def show?
+    true
+  end
+
+  def new?
     true
   end
 end

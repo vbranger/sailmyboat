@@ -10,6 +10,9 @@
 
 <%# Cards %>
 <div class="container">
+
+ <p> <%= link_to 'create a new conveying', new_conveying_path %></p>
+
   <div class="row my-3">
     <!-- Display last 3 conveyings created in DB -->
     <% @last_three_conveyings.each do |conveying| %>
