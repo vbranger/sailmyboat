@@ -1,0 +1,33 @@
+.card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  & img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 16px;
+  }
+
+  p {
+    font-size: 12px;
+    opacity: .7;
+    margin-top: 16px;
+  }
+
+}
+
+.card-infos {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+
