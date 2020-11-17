@@ -1,13 +1,27 @@
 <h1>Search results</h1>
 
-<% @conveyings.each do |conveying| %>
-  <%= link_to conveying_path(conveying) do %>
-    <div class="card">
-      <%= conveying.boat_name %>
-      <%= conveying.boat_type %>
-      <%= conveying.start_location %> <%= conveying.arrival_location %>
+<div class="container">
+
+  <div class="row my-3">
+
+    <% @conveyings.each do |conveying| %>
+    <div class="col-4 my-3">
+      <%= link_to conveying_path(conveying) do %>
+      <div class="card">
+        <img src="https://source.unsplash.com/random" alt="boat picture" />
+        <div class="card-infos">
+          <div>
+            <h2><%= conveying.start_location %> > <%= conveying.arrival_location %></h2>
+            <p>before <%= conveying.arrival_date %></p>
+          </div>
+          <h2><%= conveying.price %>€</h2>
+        </div>
+      </div>
+      <% end %>
     </div>
-  <% end %>
-<% end %>
+    <% end %>
+  </div>
+
+</div>
 
 <%= link_to 'Back to home page', root_path %>
