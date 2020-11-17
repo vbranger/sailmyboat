@@ -1,17 +1,31 @@
-<div class="container">
-  <h1>Create a new conveying</h1>
+<div class="container pt-5 col-6">
+  <h1 class="text-center mb-5">Create a new conveying</h1>
 
   <%= simple_form_for @conveying do |f| %>
     <%= f.input :boat_name%>
     <%= f.input :boat_type%>
+    <div class="form-row">
+      <div class="col-6 form-group">
     <%= f.input :start_location%>
+      </div>
+      <div class="col-6 form-group">
     <%= f.input :arrival_location%>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-6 form-group">
     <%= f.input :start_date, as: :date, html5: true%>
+    </div>
+      <div class="col-6 form-group">
     <%= f.input :arrival_date, as: :date, html5: true%>
+      </div>
+    </div>
     <%= f.input :duration%>
     <%= f.input :capacity%>
 
     <%= f.input :photo, as: :file %>
-    <%= f.submit %>
+    <%= f.button :submit, "Submit", :class => "btn btn-primary w-100" %>
   <% end %>
 </div>
+<br>
+<br>
