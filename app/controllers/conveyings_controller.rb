@@ -1,4 +1,13 @@
 class ConveyingsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  def index
+    @conveyings = policy_scope(Conveying).order(created_at: :desc)
+  end
+
+  def show
+    @conveying = Conveying.find(params[:id])
+    authorize @conveying
+  end
 
   def new
     @conveying = Conveying.new
