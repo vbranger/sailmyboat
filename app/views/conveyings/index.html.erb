@@ -1,13 +1,15 @@
-<h1>Search results</h1>
+<div class="container" style="min-height: 85vh">
+  <h1>Search results</h1>
 
-<% @conveyings.each do |conveying| %>
-  <%= link_to conveying_path(conveying) do %>
-    <div class="card">
-      <%= conveying.boat_name %>
-      <%= conveying.boat_type %>
-      <%= conveying.start_location %> <%= conveying.arrival_location %>
-    </div>
+  <% @conveyings.each do |conveying| %>
+    <%= link_to conveying_path(conveying) do %>
+      <div class="card">
+        <%= conveying.boat_name %>
+        <%= conveying.boat_type %>
+        <%= conveying.start_location %> <%= conveying.arrival_location %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 
-<%= link_to 'Back to home page', root_path %>
+  <%= link_to 'Back to home page', root_path %>
+</div>
