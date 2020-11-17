@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Create a new conveying</h1>
+
+  <%= simple_form_for @conveying do |f| %>
+    <%= f.input :boat_name%>
+    <%= f.input :boat_type%>
+    <%= f.input :start_location%>
+    <%= f.input :arrival_location%>
+    <%= f.input :start_date, as: :date, html5: true%>
+    <%= f.input :arrival_date, as: :date, html5: true%>
+    <%= f.input :duration%>
+    <%= f.input :capacity%>
+
+    <%= f.input :photo, as: :file %>
+    <%= f.submit %>
+  <% end %>
+</div>
