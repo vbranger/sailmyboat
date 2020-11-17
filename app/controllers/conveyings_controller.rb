@@ -16,6 +16,6 @@ class ConveyingsController < ApplicationController
   private
 
   def conveying_params
-    params.require(:conveying).permit(:boat_name, :boat_type, :start_location, :arrival_location, :start_date, :arrival_date, :duration, :price, :capacity, :owner_id, :photo)
+    params.require(:conveying).permit(:boat_name, :boat_type, :start_location, :arrival_location, :start_date, :arrival_date, :duration, :price, :capacity, :owner_id, photos: [])
   end
 end
