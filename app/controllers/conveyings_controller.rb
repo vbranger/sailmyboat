@@ -14,6 +14,7 @@ class ConveyingsController < ApplicationController
   def show
     @conveying = Conveying.find(params[:id])
     authorize @conveying
+    @booking = Booking.new
   end
 
   def new
