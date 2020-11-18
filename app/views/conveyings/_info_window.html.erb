@@ -1,0 +1,12 @@
+<h2><%= conveying.start_location %> > <%= conveying.arrival_location %></h2>
+<div class="d-flex">
+  <%= cl_image_tag conveying.photos[0].key, :width=>100, :height=>100, :gravity=>"auto:0", :crop=>"thumb" %>
+  <div class="infos px-3">
+    <div class="date">
+      <p>before</p>
+      <p><%= conveying.arrival_date.strftime("%d/%m/%Y") %></p>
+    </div>
+    <h2><%= conveying.price %>€</h2>
+    
+  </div>
+</div>

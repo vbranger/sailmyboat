@@ -6,7 +6,8 @@ class ConveyingsController < ApplicationController
     @markers = @conveyings.geocoded.map do |conveying|
       {
         lat: conveying.latitude,
-        lng: conveying.longitude
+        lng: conveying.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { conveying: conveying })
       }
     end
   end
