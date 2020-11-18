@@ -9,7 +9,7 @@
       <div class="col-4 my-3">
         <%= link_to conveying_path(conveying) do %>
         <div class="card">
-          <img src="https://source.unsplash.com/random" alt="boat picture" />
+          <%= cl_image_tag conveying.photos[0].key %>
           <div class="card-infos">
             <div>
               <h2><%= conveying.start_location %> > <%= conveying.arrival_location %></h2>
