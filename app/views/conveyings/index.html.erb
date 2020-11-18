@@ -1,29 +1,37 @@
 <div class="container" style="min-height: 85vh">
   <h1>Search results</h1>
   
-<div class="container">
+  <div class="container">
 
-  <div class="row my-3">
+    <div class="row my-3">
 
-    <% @conveyings.each do |conveying| %>
-    <div class="col-4 my-3">
-      <%= link_to conveying_path(conveying) do %>
-      <div class="card">
-        <img src="https://source.unsplash.com/random" alt="boat picture" />
-        <div class="card-infos">
-          <div>
-            <h2><%= conveying.start_location %> > <%= conveying.arrival_location %></h2>
-            <p>before <%= conveying.arrival_date %></p>
+      <% @conveyings.each do |conveying| %>
+      <div class="col-4 my-3">
+        <%= link_to conveying_path(conveying) do %>
+        <div class="card">
+          <img src="https://source.unsplash.com/random" alt="boat picture" />
+          <div class="card-infos">
+            <div>
+              <h2><%= conveying.start_location %> > <%= conveying.arrival_location %></h2>
+              <p>before <%= conveying.arrival_date %></p>
+            </div>
+            <h2><%= conveying.price %>€</h2>
           </div>
-          <h2><%= conveying.price %>€</h2>
         </div>
+        <% end %>
       </div>
       <% end %>
     </div>
-    <% end %>
+
   </div>
 
-</div>
+  <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+
 
   <%= link_to 'Back to home page', root_path %>
 </div>
