@@ -1,3 +1,4 @@
+<div class="container">
 <div class="conveying-infos">
   <div class="boat-image m-3">
     <%= cl_image_tag @conveying.photos.first.key, height: 300, width: 400, crop: :fill %>
@@ -11,7 +12,7 @@
   </div>
 
   <div class="boat-details">
-    <div class="container">
+
       <div class="card m-3">
         <div class="card-body">
           <h5> <%=  @conveying.boat_name %></h5>
