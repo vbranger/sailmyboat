@@ -3,15 +3,51 @@
 <div class="conveying-infos">
   <div class="boat-image">
     <%  @conveying.photos.each do |photo|%>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <div class="row">
+        <div class="col-4">
+          <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
+          <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
+          <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
+        </div>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
+    </div>
   </div>
 
   <div class="boat-details">
-    <h2>les détails du bateau</h2>
-    <h2>Ajouter des dates pour ce convoyage</h2>
-    <h2>Envoyer la demande</h2>
+    <div class="container">
+
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">@conveying.boat_name</p>
+        </div>
+      </div>
+
+      <div class="card">
+          <div class="card-header">
+            Featured
+          </div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Book this conveying</a>
+        </div>
+
+        <!-- TO DO IMPLEMENT BOOKING / FORM -->
+        <%#= simple_form_for @conveying do |f| %>
+          <%#= f.input :boat_name%>
+          <%#= f.input :boat_type%>
+          <%#= f.button :submit, "Submit", :class => "btn btn-primary w-100" %>
+        <%# end %>
+
+      </div>
+    </div>
   </div>
 </div>
 
+
+<!-- picto
+container
+polices
+compoants bootstrap -->
 
