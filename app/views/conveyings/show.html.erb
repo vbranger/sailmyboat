@@ -1,11 +1,10 @@
 <h2><%= @conveying.boat_name %></h2>
 
 <div class="conveying-infos">
-  <div class="boat-pictures">
-    <img src="https://source.unsplash.com/random" alt="main-boat-pic">
-    <img src="https://source.unsplash.com/random" alt="main-boat-pic">
-    <img src="https://source.unsplash.com/random" alt="main-boat-pic">
-    <img src="https://source.unsplash.com/random" alt="main-boat-pic">
+  <div class="boat-image">
+    <%  @conveying.photos.each do |photo|%>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
   </div>
 
   <div class="boat-details">
