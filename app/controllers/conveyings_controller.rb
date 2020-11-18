@@ -2,6 +2,13 @@ class ConveyingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :new]
   def index
     @conveyings = policy_scope(Conveying).order(created_at: :desc)
+    # the `geocoded` scope filters only conveyings with coordinates (latitude & longitude)
+    @markers = @conveyings.geocoded.map do |conveying|
+      {
+        lat: conveying.latitude,
+        lng: conveying.longitude
+      }
+    end
   end
 
   def show
