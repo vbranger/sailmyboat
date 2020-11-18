@@ -1,10 +1,12 @@
 <div class="container" style="min-height: 85vh">
-  <h1>Search results</h1>
+  <h1>Search results (<%= @conveyings.count %>)</h1>
   
   <div class="container">
-
-    <div class="row my-3">
-
+    <div class="row justify-content-end">
+      <button type="button" class="btn btn-outline-primary" id="btn-map">Display map</button>
+      <button type="button" class="btn btn-outline-primary hidden" id="btn-list">Display list</button>
+    </div>
+    <div class="row my-3" id="cards-result">
       <% @conveyings.each do |conveying| %>
       <div class="col-4 my-3">
         <%= link_to conveying_path(conveying) do %>
@@ -22,16 +24,14 @@
       </div>
       <% end %>
     </div>
-
   </div>
 
   <div id="map"
-     style="width: 100%; height: 600px;"
+     class="hidden"
+     style="width: 100%; height: 600px; margin: 24px 0 24px 0"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-
-
 
   <%= link_to 'Back to home page', root_path %>
 </div>
