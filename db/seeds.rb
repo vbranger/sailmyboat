@@ -15,12 +15,12 @@ vincent_photo = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g
 mathilde_photo = URI.open('https://avatars2.githubusercontent.com/u/36241255')
 
 
-boat1 = URI.open('https://www.usinenouvelle.com/mediatheque/9/0/1/000720109_image_896x598/image.png')
-boat2 = URI.open('https://mathiasmarine.com/pub/media/catalog/category/GT225_2019-1478_590x332.jpg')
-boat3 = URI.open('https://www.aprilmarine.fr/sites/default/files/img/smart_page/voilier.jpg')
-boat4 = URI.open('https://media.tacdn.com/media/attractions-splice-spp-674x446/09/c7/5d/51.jpg')
-boat5 = URI.open('https://upload.wikimedia.org/wikipedia/commons/9/9f/Arp%C3%A8ge_sous_voiles.jpg')
-
+boat1 = [URI.open('https://www.usinenouvelle.com/mediatheque/9/0/1/000720109_image_896x598/image.png')]
+boat2 = [URI.open('https://mathiasmarine.com/pub/media/catalog/category/GT225_2019-1478_590x332.jpg')]
+boat3 = [URI.open('https://www.aprilmarine.fr/sites/default/files/img/smart_page/voilier.jpg')]
+boat4 = [URI.open('https://media.tacdn.com/media/attractions-splice-spp-674x446/09/c7/5d/51.jpg')]
+boat5 = [URI.open('https://upload.wikimedia.org/wikipedia/commons/9/9f/Arp%C3%A8ge_sous_voiles.jpg')]
+boat6 = [URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_3.jpg'), URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_2.jpg'), URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_1.jpg')]
 
 puts "Cleaning database..."
 User.destroy_all
@@ -44,16 +44,21 @@ puts "Creating conveyings..."
 marseille_ajaccio = { boat_name:'Titanic', boat_type: 'big', start_location: 'Marseille', arrival_location: 'Ajaccio', start_date: '01/8/2021', arrival_date: '02/08/2021', duration: 2, price: 100, capacity: 2, user_id: victor.id }
 ajaccio_marseille = { boat_name:'Bigboat', boat_type: 'big', start_location: 'Ajaccio', arrival_location: 'Marseille', start_date: '15/08/2021', arrival_date: '17/08/2021', duration: 2, price: 100, capacity: 2, user_id: elsa.id }
 brest_nice = { boat_name:'Black Pearl', boat_type: 'medium', start_location: 'Brest', arrival_location: 'Nice', start_date: '01/07/2021', arrival_date: '20/07/2021', duration: 20, price: 500, capacity: 4, user_id: pierre.id }
-nantes_newyork = { boat_name:'Crazy Boat', boat_type: 'medium', start_location: 'Nantes', arrival_location: 'New York', start_date: '01/04/2021', arrival_date: '01/05/2021', duration: 31, price: 1000, capacity: 5, user_id: vincent.id }
+nantes_newyork = { boat_name:'Crazy Boat', boat_type: 'medium', start_location: 'Saint-Nazaire', arrival_location: 'New York', start_date: '01/04/2021', arrival_date: '01/05/2021', duration: 31, price: 1000, capacity: 5, user_id: vincent.id }
 cannes_st_tropez = { boat_name:'Zodiac', boat_type: 'small', start_location: 'Cannes', arrival_location: 'St Tropez', start_date: '01/09/2021', arrival_date: '01/09/2021', duration: 1, price: 90, capacity: 1, user_id: mathilde.id }
+dunkerque_la_corogne = { boat_name:'Adonis', boat_type: 'small', start_location: 'Dunkerque', arrival_location: 'La Corogne', start_date: '01/07/2020', arrival_date: '20/12/2020', duration: 1, price: 800, capacity: 1, user_id: mathilde.id }
 
-[[marseille_ajaccio, boat1], [ajaccio_marseille, boat2], [brest_nice, boat3], [nantes_newyork, boat4], [cannes_st_tropez, boat5]].each_with_index do |attributes, index|
+[[marseille_ajaccio, boat1], [ajaccio_marseille, boat2], [brest_nice, boat3], [nantes_newyork, boat4], [cannes_st_tropez, boat5], [dunkerque_la_corogne, boat6]].each_with_index do |attributes, index|
   p "#{index}"
   conveying = Conveying.create!(attributes[0])
   puts "Created #{conveying.boat_name}"
-  puts "attaching photo : boat#{index}.png"
-  conveying.photos.attach(io: attributes[1], filename: "boat#{index}.png", content_type: 'image/png')
-  puts 'photo added'
+  index_photo = 0
+  attributes[1].each do |photo|
+    puts "attaching photo : boat#{index}-#{index_photo}.png"
+    conveying.photos.attach(io: photo, filename: "boat#{index}-#{index_photo}.png", content_type: 'image/png')
+    puts 'photo added'
+    index_photo += 1
+  end
 end
 
 puts "Finished!"
