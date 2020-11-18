@@ -1,0 +1,17 @@
+.mapboxgl-popup {
+  width: 300px;
+}
+
+.mapboxgl-popup-content {
+  & h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 16px;
+  }
+  & p {
+    font-size: 12px;
+    opacity: .7;
+    margin-top: 16px;
+  }
+}
+
