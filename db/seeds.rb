@@ -23,6 +23,7 @@ boat5 = [URI.open('https://upload.wikimedia.org/wikipedia/commons/9/9f/Arp%C3%A8
 boat6 = [URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_3.jpg'), URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_2.jpg'), URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_1.jpg')]
 
 puts "Cleaning database..."
+Booking.destroy_all
 User.destroy_all
 
 puts "Creating users..."
