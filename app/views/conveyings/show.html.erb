@@ -1,11 +1,12 @@
 
-<div class="boat-image-parent">
-    <%= cl_image_tag @conveying.photos.first.key, class: "boat-image-child-one"%>
-    <%  @conveying.photos.each do |photo|%>
-      <%= cl_image_tag photo.key, class: "boat-image-child-two"%>
-    <% end %>
+<div class="container">
+  <div class="boat-image-parent">
+      <%= cl_image_tag @conveying.photos.first.key, class: "boat-image-child-one"%>
+      <%  @conveying.photos.each do |photo|%>
+        <%= cl_image_tag photo.key, class: "boat-image-child-two"%>
+      <% end %>
+  </div>
 </div>
-
 
 <div class="boat-details">
   <div class="container">
