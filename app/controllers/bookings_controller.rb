@@ -6,7 +6,7 @@ end
 
 # def show
 #   @conveying = Conveying.find(params[:conveying_id])
-#   @booking = @conveying.
+#   @booking = @conveying.booking
 # end
 
 def create
