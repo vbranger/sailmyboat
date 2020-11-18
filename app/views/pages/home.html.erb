@@ -23,8 +23,11 @@
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
           <% end %>
           <div class="card-infos">
-            <h2><%= conveying.start_location %> > <%= conveying.arrival_location %></h2>
-            <p>before <%= conveying.arrival_date %></p>
+            <div>
+              <h2><%= conveying.start_location %> > <%= conveying.arrival_location %></h2>
+              <p>before <%= conveying.arrival_date %></p>
+            </div>
+            <h2><%= conveying.price %>€</h2>
           </div>
         </div>
         <% end %>
