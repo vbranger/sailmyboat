@@ -5,9 +5,11 @@
 // }
 
 .boat-image-parent {
-display: grid;
- grid-template-columns: 1fr 1fr 1fr 1fr;
- grid-template-rows: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 10px;
+  overflow: hidden;
 }
 
 .boat-image-child-one {
