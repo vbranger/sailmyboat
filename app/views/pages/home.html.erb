@@ -11,14 +11,13 @@
 <%# Cards %>
 <div class="container">
 
- <p> <%= link_to 'create a new conveying', new_conveying_path %></p>
-
   <div class="row my-3">
     <!-- Display last 3 conveyings created in DB -->
     <% @last_three_conveyings.each do |conveying| %>
 
      <!-- display en 3 colonnes -->
       <div class="col-4">
+        <%= link_to conveying_path(conveying) do %>
         <div class="card">
             <%  conveying.photos.each do |photo|%>
             <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
@@ -29,9 +28,8 @@
               <h2><%= conveying.start_location %> > <%= conveying.arrival_location %></h2>
               <p>before <%= conveying.arrival_date %></p>
             </div>
-            <h2><%= conveying.price %>€</h2>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>
