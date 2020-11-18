@@ -1,3 +1,4 @@
+
 <div class="boat-image-parent">
     <%= cl_image_tag @conveying.photos.first.key, class: "boat-image-child-one"%>
     <%  @conveying.photos.each do |photo|%>
@@ -23,6 +24,7 @@
     <div class="card m-3">
       <div class="card-header">
         Book your dates
+
       </div>
       <div class="m-3">
         <%= simple_form_for [@conveying, @booking] do |f| %>
