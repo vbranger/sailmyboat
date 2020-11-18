@@ -14,8 +14,9 @@ def create
   @booking.user = current_user
   @conveying = Conveying.find(params[:conveying_id])
   @booking.conveying = @conveying
+  authorize @booking
   if @booking.save
-    redirect_to conveying_path(@conveying), notice: "Booking was created"
+    redirect_to conveying_path(@conveying), notice: "Booking created"
   else
     render :new
   end
