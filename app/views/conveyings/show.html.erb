@@ -1,53 +1,41 @@
-<h2><%= @conveying.boat_name %></h2>
-
 <div class="conveying-infos">
-  <div class="boat-image">
-    <%  @conveying.photos.each do |photo|%>
-      <div class="row">
-        <div class="col-4">
-          <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
-          <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
-          <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
-        </div>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
+  <div class="boat-image m-3">
+    <%= cl_image_tag @conveying.photos.first.key, height: 300, width: 400, crop: :fill %>
+    <div class="row">
+      <%  @conveying.photos.each do |photo|%>
+      <div class="col-auto m-3">
+        <%= cl_image_tag photo.key, height: 150, crop: :fill %>
+      </div>
+      <% end %>
     </div>
   </div>
 
   <div class="boat-details">
     <div class="container">
-
-      <div class="card">
+      <div class="card m-3">
         <div class="card-body">
-          <p class="card-text">@conveying.boat_name</p>
+          <h5> <%=  @conveying.boat_name %></h5>
+          <p class="card-text"> Type de bateau : <%= @conveying.boat_type %></p>
+          <p class="card-text"> Lieu de départ : <%= @conveying.start_location %></p>
+          <p class="card-text"> Lieu d'arrivée : <%= @conveying.arrival_location %></p>
+          <p class="card-text"> Date de fin de convoyage : <%= @conveying.arrival_date %></p>
+          <p class="card-text"> Capacité : <%= @conveying.capacity %></p>
+          <p class="card-text"> Rémunération : <%= @conveying.price %>€</p>
         </div>
       </div>
 
-      <div class="card">
-          <div class="card-header">
-            Featured
-          </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Book this conveying</a>
+      <div class="card m-3">
+        <div class="card-header">
+          Book your dates
         </div>
-
-        <!-- TO DO IMPLEMENT BOOKING / FORM -->
-        <%#= simple_form_for @conveying do |f| %>
-          <%#= f.input :boat_name%>
-          <%#= f.input :boat_type%>
-          <%#= f.button :submit, "Submit", :class => "btn btn-primary w-100" %>
-        <%# end %>
-
+        <div class="m-3">
+          <%= simple_form_for [@conveying, @booking] do |f| %>
+            <%= f.input :start_time%>
+            <%= f.input :end_time%>
+            <%= f.button :submit, "Book Conveying", :class => "btn btn-primary w-100" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-<!-- picto
-container
-polices
-compoants bootstrap -->
-
