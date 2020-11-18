@@ -20,7 +20,7 @@ boat2 = [URI.open('https://mathiasmarine.com/pub/media/catalog/category/GT225_20
 boat3 = [URI.open('https://www.aprilmarine.fr/sites/default/files/img/smart_page/voilier.jpg')]
 boat4 = [URI.open('https://media.tacdn.com/media/attractions-splice-spp-674x446/09/c7/5d/51.jpg')]
 boat5 = [URI.open('https://upload.wikimedia.org/wikipedia/commons/9/9f/Arp%C3%A8ge_sous_voiles.jpg')]
-boat6 = [URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_3.jpg'), URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_2.jpg'), URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_1.jpg')]
+boat6 = [URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_3.jpg'), URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_2.jpg'), URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_1.jpg'), URI.open('https://www.finn-france.ovh/images/com_adsmanager/contents/croiseur-rapide-10m_438_5.jpg')]
 
 puts "Cleaning database..."
 Booking.destroy_all

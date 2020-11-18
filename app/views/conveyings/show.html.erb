@@ -1,28 +1,30 @@
-<div class="container">
-<div class="conveying-infos">
-  <div class="boat-image m-3">
-    <%= cl_image_tag @conveying.photos.first.key, height: 300, width: 400, crop: :fill %>
-    <div class="row">
-      <%  @conveying.photos.each do |photo|%>
-      <div class="col-auto m-3">
-        <%= cl_image_tag photo.key, height: 150, crop: :fill %>
+
+<div class="boat-image-parent">
+    <%= cl_image_tag @conveying.photos.first.key, class: "boat-image-child-one"%>
+    <%  @conveying.photos.each do |photo|%>
+      <%= cl_image_tag photo.key, class: "boat-image-child-two"%>
+    <% end %>
+</div>
+
+
+<div class="boat-details">
+  <div class="container">
+    <div class="card m-3">
+      <div class="card-body">
+        <h5> <%=  @conveying.boat_name %></h5>
+        <p class="card-text"> Type de bateau : <%= @conveying.boat_type %></p>
+        <p class="card-text"> Lieu de départ : <%= @conveying.start_location %></p>
+        <p class="card-text"> Lieu d'arrivée : <%= @conveying.arrival_location %></p>
+        <p class="card-text"> Date de fin de convoyage : <%= @conveying.arrival_date %></p>
+        <p class="card-text"> Capacité : <%= @conveying.capacity %></p>
+        <p class="card-text"> Rémunération : <%= @conveying.price %>€</p>
       </div>
-      <% end %>
     </div>
-  </div>
 
-  <div class="boat-details">
+    <div class="card m-3">
+      <div class="card-header">
+        Book your dates
 
-      <div class="card m-3">
-        <div class="card-body">
-          <h5> <%=  @conveying.boat_name %></h5>
-          <p class="card-text"> Type de bateau : <%= @conveying.boat_type %></p>
-          <p class="card-text"> Lieu de départ : <%= @conveying.start_location %></p>
-          <p class="card-text"> Lieu d'arrivée : <%= @conveying.arrival_location %></p>
-          <p class="card-text"> Date de fin de convoyage : <%= @conveying.arrival_date %></p>
-          <p class="card-text"> Capacité : <%= @conveying.capacity %></p>
-          <p class="card-text"> Rémunération : <%= @conveying.price %>€</p>
-        </div>
       </div>
 
       <div class="card m-3">
