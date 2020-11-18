@@ -28,7 +28,7 @@ User.destroy_all
 puts "Creating users..."
 victor = User.create(first_name: 'Victor', last_name: 'Branger', email: 'victor@gmail.com', password: '123456')
 elsa = User.create(first_name: 'Elsa', last_name: 'Lebas', email: 'elsa@gmail.com', password: '223456')
-pierre = User.create(first_name: 'Pierre', last_name: 'Riedinger', email: 'pierre@gmail.com', password: '323456')
+pierre = User.create(first_name: 'Pierre', last_name: 'Riedinger', email: 'pierre@gmail.com', password: '123456')
 vincent = User.create(first_name: 'Vincent', last_name: 'Huché', email: 'vincent@gmail.com', password: '423456')
 mathilde = User.create(first_name: 'Mathilde', last_name: 'Robert', email: 'mathilde@gmail.com', password: '523456')
 

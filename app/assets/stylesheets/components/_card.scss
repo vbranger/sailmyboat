@@ -31,7 +31,9 @@
   }
 
 .card:hover{
-  border: 2px solid;
-  border-color: $gray;
+  border: 1px solid;
+
+  box-shadow: 15px 15px 15px rgba(0,0,0,0.2);
+
 }
 
