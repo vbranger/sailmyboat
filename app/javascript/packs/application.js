@@ -26,7 +26,7 @@ require("channels")
 import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initToggle } from '../components/map_list_toggle.js';
-import { initCalendar } from '../plugins/flatpickr';
+import { initCalendar, initCalendarNew } from '../plugins/flatpickr';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -36,4 +36,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initToggle();
   initCalendar();
+  initCalendarNew();
 });

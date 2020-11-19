@@ -3,14 +3,17 @@
 
   <%= simple_form_for @conveying do |f| %>
   <div class="form-row">
-      <div class="col-4 form-group">
+      <div class="col-3 form-group">
         <%= f.input :boat_name%>
       </div>
-      <div class="col-4 form-group">
+      <div class="col-3 form-group">
         <%= f.input :boat_type, collection: Conveying::BOATTYPES %>
       </div>
-      <div class="col-4 form-group">
+      <div class="col-3 form-group">
         <%= f.input :capacity, collection: Conveying::CAPACITIES%>
+      </div>
+      <div class="col-3 form-group">
+        <%= f.input :price%>
       </div>
     </div>
     <div class="form-row">
@@ -23,10 +26,10 @@
     </div>
     <div class="form-row">
       <div class="col-6 form-group">
-      <%= f.input :start_date, label: false, as: :string, required: false, input_html: {id: "range_start", class: "d-none"} %>
-        </div>
+        <%= f.input :start_date, label: 'Available from:', as: :string, required: false, input_html: { class: "datepicker"} %>
+      </div>
       <div class="col-6 form-group">
-        <%= f.input :arrival_date, as: :string, label: false, required: false, input_html: {id: "range_end", class: "d-none"} %>
+        <%= f.input :arrival_date, as: :string, label: 'Need to arrive before:', required: false, input_html: { class: "datepicker"} %>
       </div>
     </div>
     <%= f.input :photos, as: :file, input_html: { multiple: true }%>
