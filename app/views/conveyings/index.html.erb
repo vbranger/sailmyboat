@@ -1,6 +1,6 @@
 <div class="container" style="min-height: 85vh">
   <h1>Search results (<%= @conveyings.count %>)</h1>
-  
+
   <div class="container">
     <div class="row justify-content-end">
       <button type="button" class="btn btn-outline-primary" id="btn-map">Display map</button>
@@ -11,7 +11,7 @@
       <div class="col-4 my-3">
         <%= link_to conveying_path(conveying) do %>
         <div class="card">
-          <%= cl_image_tag conveying.photos[0].key %>
+            <%= cl_image_tag conveying.photos[0].key %>
           <div class="card-infos">
             <div>
               <h2><%= conveying.start_location %> > <%= conveying.arrival_location %></h2>

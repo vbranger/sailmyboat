@@ -1,5 +1,6 @@
 class ConveyingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :new]
+
   def index
     @conveyings = policy_scope(Conveying).order(created_at: :desc)
     # the `geocoded` scope filters only conveyings with coordinates (latitude & longitude)
@@ -25,11 +26,33 @@ class ConveyingsController < ApplicationController
 
   def create
     @conveying = Conveying.new(conveying_params)
-    if @conveying.save!
+    @conveying.user = current_user
+    authorize @conveying
+
+    if @conveying.save
       redirect_to @conveying, notice: "Conveying was created"
     else
       render :new
     end
+  end
+
+  def edit
+    @conveying = Conveying.find(params[:id])
+    authorize @conveying
+  end
+
+  def update
+    @conveying = Conveying.find(params[:id])
+    authorize @conveying
+    @conveying.update(conveying_params)
+    redirect_to @conveying, notice: "Conveying was updated"
+  end
+
+  def destroy
+    @conveying = Conveying.find(params[:id])
+    authorize @conveying
+    @conveying.destroy
+    redirect_to conveyings_path, notice: "Conveying was deleted"
   end
 
   private
