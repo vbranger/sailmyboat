@@ -15,7 +15,7 @@
           <div class="card-infos">
             <div>
               <h2><%= conveying.start_location %> > <%= conveying.arrival_location %></h2>
-              <p>before <%= conveying.arrival_date %></p>
+              <p>before <%= conveying.arrival_date.strftime("%B %d, %Y") %></p>
             </div>
             <h2><%= conveying.price %>€</h2>
           </div>
