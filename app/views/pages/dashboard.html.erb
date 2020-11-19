@@ -1,0 +1,13 @@
+<h2>My conveyings</h2>
+<ul>
+  <% @conveyings.each do |conveying| %>
+    <li> <%= link_to conveying.boat_name, conveying_path(conveying) %></li>
+  <% end %>
+</ul>
+
+<h2>My bookings</h2>
+<ul>
+  <% @bookings.each do |booking| %>
+    <li><%= link_to Conveying.find_by(id: booking.conveying_id).boat_name , conveying_path(booking.conveying_id) %></li>
+  <% end %>
+</ul>
