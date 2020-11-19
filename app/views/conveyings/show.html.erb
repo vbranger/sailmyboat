@@ -85,9 +85,7 @@
       <%= simple_form_for [@conveying, @booking] do |f| %>
         <%= f.input :start_time, label: false, as: :string, required: false, input_html: {id: "range_start", class: "d-none"} %>
         <%= f.input :end_time, as: :string, label: false, required: false, input_html: {id: "range_end", class: "d-none"} %>
-        <% if policy(Booking).create? %>
         <%= f.button :submit, "Book Conveying", :class => "btn btn-primary" %>
-        <% end %>
       <% end %>
     </div>
   </div>

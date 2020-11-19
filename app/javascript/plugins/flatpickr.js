@@ -10,4 +10,11 @@ flatpickr("#range_start", {
 })
 };
 
-export { initCalendar };
+const initCalendarNew = () => {
+flatpickr('.datepicker', {
+  altInput: true,
+})
+};
+
+export { initCalendar, initCalendarNew };
+
