@@ -17,6 +17,12 @@ class ConveyingsController < ApplicationController
     @conveying = Conveying.find(params[:id])
     authorize @conveying
     @booking = Booking.new
+    if @conveying.geocoded?
+      @marker = {
+          lat: @conveying.latitude,
+          lng: @conveying.longitude
+        }
+    end
   end
 
   def new
