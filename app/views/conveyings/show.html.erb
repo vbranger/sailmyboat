@@ -6,42 +6,31 @@
         <%= cl_image_tag photo.key, class: "boat-image-child-two"%>
       <% end %>
   </div>
-</div>
-
-<div class="boat-details">
-  <div class="container">
-    <div class="card m-3">
-      <div class="card-body">
-        <h5> <%=  @conveying.boat_name %></h5>
-        <p class="card-text"> Type de bateau : <%= @conveying.boat_type %></p>
-        <p class="card-text"> Lieu de départ : <%= @conveying.start_location %></p>
-        <p class="card-text"> Lieu d'arrivée : <%= @conveying.arrival_location %></p>
-        <p class="card-text"> Date de fin de convoyage : <%= @conveying.arrival_date %></p>
-        <p class="card-text"> Capacité : <%= @conveying.capacity %></p>
-        <p class="card-text"> Rémunération : <%= @conveying.price %>€</p>
-      </div>
+  <div class="row mt-3">
+    <div class="col-6">
+      <h5> <%=  @conveying.boat_name %></h5>
+      <p> Type de bateau : <%= @conveying.boat_type %></p>
+      <p> Lieu de départ : <%= @conveying.start_location %></p>
+      <p> Lieu d'arrivée : <%= @conveying.arrival_location %></p>
+      <p> Date de fin de convoyage : <%= @conveying.arrival_date %></p>
+      <p> Capacité : <%= @conveying.capacity %></p>
+      <p> Rémunération : <%= @conveying.price %>€</p>
     </div>
-
-    <div class="card m-3">
-      <div class="card-header">
-        Book your dates
-
-      </div>
-
-      <div class="card m-3">
-        <div class="card-header">
-          Book your dates
-        </div>
-        <div class="m-3">
-          <%= simple_form_for [@conveying, @booking] do |f| %>
-            <%= f.input :start_time%>
-            <%= f.input :end_time%>
-            <% if policy(Booking).create? %>
-            <%= f.button :submit, "Book Conveying", :class => "btn btn-primary w-100" %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+    <div class="col-6">
+      <h5>Pick your dates:</h5>
+      <%= simple_form_for [@conveying, @booking] do |f| %>
+        <%= f.input :start_time, label: false, as: :string, required: false, input_html: {id: "range_start", class: "d-none"} %>
+        <%= f.input :end_time, as: :string, label: false, required: false, input_html: {id: "range_end", class: "d-none"} %>
+        <% if policy(Booking).create? %>
+        <%= f.button :submit, "Book Conveying", :class => "btn btn-primary" %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
+
+
+<%= link_to 'edit conveying', edit_conveying_path %>
+<%= link_to 'delete conveying', conveying_path(@conveying), method: :delete, data: {confirm: "Are you sure ?"}  %>
+
+
