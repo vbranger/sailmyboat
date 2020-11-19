@@ -43,3 +43,19 @@
 .card a:hover{
   text-decoration: none;
 }
+
+.conveying-card {
+  h3, p {
+    margin: 0;
+  }
+}
+
+.skipper-card {
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  h2, p {
+    margin-bottom: 10px;
+  }
+}
