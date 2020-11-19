@@ -52,7 +52,7 @@ class ConveyingsController < ApplicationController
     @conveying = Conveying.find(params[:id])
     authorize @conveying
     @conveying.destroy
-    redirect_to conveyings_path, notice: "Conveying was deleted"
+    redirect_to dashboard_path, notice: "Conveying was deleted"
   end
 
   private
