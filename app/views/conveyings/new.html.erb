@@ -3,7 +3,7 @@
 
   <%= simple_form_for @conveying do |f| %>
     <%= f.input :boat_name%>
-    <%= f.input :boat_type%>
+    <%= f.input :boat_type, collection: Conveying::BOATTYPES %>
     <div class="form-row">
       <div class="col-6 form-group">
     <%= f.input :start_location%>
@@ -14,18 +14,14 @@
     </div>
     <div class="form-row">
       <div class="col-6 form-group">
-    <%= f.input :start_date, as: :date, html5: true%>
+    <%= f.input :start_date, as: :date %>
     </div>
       <div class="col-6 form-group">
-    <%= f.input :arrival_date, as: :date, html5: true%>
+    <%= f.input :arrival_date, as: :date %>
       </div>
     </div>
-    <%= f.input :duration%>
-    <%= f.input :capacity%>
-    <%= f.input :price%>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :capacity, collection: Conveying::CAPACITIES%>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }%>
     <%= f.button :submit, "Submit", :class => "btn btn-primary w-100" %>
   <% end %>
 </div>
-<br>
-<br>
