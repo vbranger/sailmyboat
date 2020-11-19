@@ -2,8 +2,17 @@
   <h1 class="text-center mb-5">Create a new conveying</h1>
 
   <%= simple_form_for @conveying do |f| %>
-    <%= f.input :boat_name%>
-    <%= f.input :boat_type, collection: Conveying::BOATTYPES %>
+  <div class="form-row">
+      <div class="col-4 form-group">
+        <%= f.input :boat_name%>
+      </div>
+      <div class="col-4 form-group">
+        <%= f.input :boat_type, collection: Conveying::BOATTYPES %>
+      </div>
+      <div class="col-4 form-group">
+        <%= f.input :capacity, collection: Conveying::CAPACITIES%>
+      </div>
+    </div>
     <div class="form-row">
       <div class="col-6 form-group">
     <%= f.input :start_location%>
@@ -14,14 +23,13 @@
     </div>
     <div class="form-row">
       <div class="col-6 form-group">
-    <%= f.input :start_date, as: :date %>
-    </div>
+      <%= f.input :start_date, label: false, as: :string, required: false, input_html: {id: "range_start", class: "d-none"} %>
+        </div>
       <div class="col-6 form-group">
-    <%= f.input :arrival_date, as: :date %>
+        <%= f.input :arrival_date, as: :string, label: false, required: false, input_html: {id: "range_end", class: "d-none"} %>
       </div>
     </div>
-    <%= f.input :capacity, collection: Conveying::CAPACITIES%>
     <%= f.input :photos, as: :file, input_html: { multiple: true }%>
-    <%= f.button :submit, "Submit", :class => "btn btn-primary w-100" %>
+    <%= f.button :submit, "Create", :class => "btn btn-primary w-100" %>
   <% end %>
 </div>
