@@ -11,72 +11,44 @@
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="requests" role="tabpanel" aria-labelledby="requests-tab">
-      <div class="conveying-card d-flex p-3 my-3 border justify-content-between align-items-center rounded shadow">
-        <img src="https://source.unsplash.com/random/100x50" alt="">
-        <div class="flex-grow-1 ml-3">
-          <h4>Marseille > Ajaccio</h4>
-          <p>Date</p>
+      <% @conveyings.each do |conveying| %>
+        <div class="conveying-card d-flex p-3 my-3 border justify-content-between align-items-center rounded shadow">
+          <%= cl_image_tag conveying.photos.first.key, width: 100, height: 50 %>
+          <div class="flex-grow-1 ml-3">
+            <h4><%= conveying.start_location %> > <%= conveying.arrival_location %></h4>
+            <p>before <%= conveying.arrival_date.strftime("%B %d, %Y") %></p>
+          </div>
+          <% if conveying.booking_ids.count.zero? %>
+            <p><em>No request</em></p>
+          <% else %>
+            <p class="badge badge-pill badge-primary p-2"><strong><%= pluralize conveying.booking_ids.count, 'request', plural: 'requests' %> pending</strong></p>
+          <% end %>
+          
         </div>
-        <p><strong>3 requests pending</strong></p>
+
+        <div class="row">
+          <% conveying.booking_ids.each do |booking_id| %>
+            <div class="col-4">
+              <div class="card skipper-card">
+                <%= cl_image_tag Booking.find(booking_id).user.photo.key, width: 250, height: 150 %>
+                <div class="p-3">
+                  <div class="d-flex justify-content-between">
+                    <h2><%= Booking.find(booking_id).user.first_name %> <%= Booking.find(booking_id).user.last_name %></h2>
+                    <h2>4.1 <i class="fas fa-star"></i></h2>
+                  </div>
+                  <p>from <%= Booking.find(booking_id).start_time.strftime("%d/%m/%Y") %> to <%= Booking.find(booking_id).start_time.strftime("%d/%m/%Y") %></p>
+                  <div class="d-flex justify-content-end">
+                    <button class="btn btn-success btn-sm mr-3">Accept</button>
+                    <%= link_to "Decline", booking_path(booking_id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-
-      <div class="row">
-        <div class="col-4">
-
-          <div class="card skipper-card">
-            <img src="https://source.unsplash.com/random/250x150" alt="">
-
-            <div class="p-3">
-              <div class="d-flex justify-content-between">
-                <h2>Jean Dominique</h2>
-                <h2>4.1 <i class="fas fa-star"></i></h2>
-              </div>
-              <p>19/10/20 - 27-10/20</p>
-              <div class="d-flex justify-content-end">
-                <button class="btn btn-success btn-sm mr-3">Accept</button>
-                <button class="btn btn-danger btn-sm">Decline</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-4">
-          <div class="card skipper-card">
-            <img src="https://source.unsplash.com/random/250x150" alt="">
-
-            <div class="p-3">
-              <div class="d-flex justify-content-between">
-                <h2>Jean Dominique</h2>
-                <h2>4.1 <i class="fas fa-star"></i></h2>
-              </div>
-              <p>19/10/20 - 27/10/20</p>
-              <div class="d-flex justify-content-end">
-                <button class="btn btn-success btn-sm mr-3">Accept</button>
-                <button class="btn btn-danger btn-sm">Decline</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="card skipper-card">
-            <img src="https://source.unsplash.com/random/250x150" alt="">
-
-            <div class="p-3">
-              <div class="d-flex justify-content-between">
-                <h2>Jean Dominique</h2>
-                <h2>4.1 <i class="fas fa-star"></i></h2>
-              </div>
-              <p>19/10/20 - 27-10/20</p>
-              <div class="d-flex justify-content-end">
-                <button class="btn btn-success btn-sm mr-3">Accept</button>
-                <button class="btn btn-danger btn-sm">Decline</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
+
     <div class="tab-pane fade" id="my_conveyings" role="tabpanel" aria-labelledby="my_conveyings-tab">
      <div>
        <h3 class="mt-3">Upcoming</h3>
@@ -129,20 +101,3 @@
       </div>
     </div>
   </div>
-
-
-
-
-  <ul>
-    <% @conveyings.each do |conveying| %>
-      <li> <%= link_to conveying.boat_name, conveying_path(conveying) %></li>
-    <% end %>
-  </ul>
-
-  <h2>My bookings</h2>
-  <ul>
-    <% @bookings.each do |booking| %>
-      <li><%= link_to Conveying.find_by(id: booking.conveying_id).boat_name , conveying_path(booking.conveying_id) %></li>
-    <% end %>
-  </ul>
-</div>
