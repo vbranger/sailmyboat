@@ -21,7 +21,7 @@
           <% if conveying.booking_ids.count.zero? %>
             <p><em>No request</em></p>
           <% else %>
-            <p><strong><%= pluralize conveying.booking_ids.count, 'request', plural: 'requests' %> pending</strong></p>
+            <p class="badge badge-pill badge-primary p-2"><strong><%= pluralize conveying.booking_ids.count, 'request', plural: 'requests' %> pending</strong></p>
           <% end %>
           
         </div>
