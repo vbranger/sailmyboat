@@ -13,7 +13,7 @@
         <%= f.input :capacity, collection: Conveying::CAPACITIES%>
       </div>
       <div class="col-3 form-group">
-        <%= f.input :price%>
+        <%= f.input :price, input_html: { min: 0 } %>
       </div>
     </div>
     <div class="form-row">
