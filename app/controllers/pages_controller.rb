@@ -5,11 +5,12 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    @conveyings = Conveying.where(user_id: @user.id, booked: false).order(arrival_date: :desc)
+    @today = Date.today
+    @conveyings = Conveying.where(user_id: @user.id, booked: false).order(arrival_date: :desc).select { |conveying| conveying.arrival_date > @today }
     @bookings = Booking.where(user_id: @user.id)
 
 
-    @today = Date.today
+    
     @upcoming_conveyings = Conveying.where(user_id: @user.id, booked: true).select { |conveying| conveying.arrival_date > @today }
     # @upcoming_conveyings = Conveying.joins(:bookings).where(conveyings: {user_id: @user.id, booked: true}, "bookings.start_time > #{@today}")
     @pending_conveyings = Conveying.where(user_id: @user.id, booked: false) 
