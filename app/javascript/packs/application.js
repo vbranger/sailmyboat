@@ -27,6 +27,7 @@ import { initMapbox, initMapboxShow } from '../plugins/init_mapbox';
 import { initToggle } from '../components/map_list_toggle.js';
 import { initCalendar, initCalendarNew } from '../plugins/flatpickr';
 import { previewImageOnFileSelect } from '../components/displayphotoinform';
+import { noticeDisappear } from '../components/notice';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -40,4 +41,5 @@ document.addEventListener('turbolinks:load', () => {
   initCalendar();
   initCalendarNew();
   previewImageOnFileSelect();
+  noticeDisappear();
 });
