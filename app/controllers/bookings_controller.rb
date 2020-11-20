@@ -29,6 +29,14 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path, notice: "You booking was deleted !"
   end
 
+  def accept
+    @booking = Booking.find(params[:booking_id])
+    authorize @booking
+    @booking.update(validated: true)
+    @booking.conveying.update(booked: true)
+    redirect_to dashboard_path
+  end
+
   private
 
   def booking_params
