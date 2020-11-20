@@ -40,6 +40,7 @@ const initMapboxShow = () => {
       container: 'map-show',
       style: 'mapbox://styles/mapbox/streets-v10'
     });
+    map.scrollZoom.disable();
     const marker = JSON.parse(mapElement.dataset.markers);
 
 
