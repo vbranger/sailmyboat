@@ -57,7 +57,7 @@
 
       <div class="d-flex align-items-center">
         <i class="far fa-calendar-check pr-3 mt-3" style="color:light-grey;"></i>
-        <p class="mb-0 mt-3"> Conveying due on: <%= @conveying.arrival_date.strftime("%B %d, %Y")  %></p>
+        <p class="mb-0 mt-3"> Conveying due date <%= @conveying.arrival_date.strftime("%d-%m-%Y") %></p>
       </div>
 
       <div class="d-flex align-items-center">

@@ -4,7 +4,7 @@
   <%= simple_form_for @conveying do |f| %>
   <div class="form-row">
       <div class="col-3 form-group">
-        <%= f.input :boat_name%>
+        <%= f.input :boat_name, :placeholder => "Black Pearl"%>
       </div>
       <div class="col-3 form-group">
         <%= f.input :boat_type, collection: Conveying::BOATTYPES %>
@@ -13,15 +13,15 @@
         <%= f.input :capacity, collection: Conveying::CAPACITIES%>
       </div>
       <div class="col-3 form-group">
-        <%= f.input :price%>
+        <%= f.input :price, input_html: { min: 0 }, label: 'Price (€)'%>
       </div>
     </div>
     <div class="form-row">
       <div class="col-6 form-group">
-    <%= f.input :start_location%>
+    <%= f.input :start_location, :placeholder => "Cannes"%>
       </div>
       <div class="col-6 form-group">
-    <%= f.input :arrival_location%>
+    <%= f.input :arrival_location, :placeholder => "Gênes"%>
       </div>
     </div>
     <div class="form-row">
