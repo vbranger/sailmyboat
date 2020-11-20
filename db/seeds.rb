@@ -27,11 +27,11 @@ Booking.destroy_all
 User.destroy_all
 
 puts "Creating users..."
-victor = User.create(first_name: 'Victor', last_name: 'Branger', email: 'victor@gmail.com', password: '123456')
-elsa = User.create(first_name: 'Elsa', last_name: 'Lebas', email: 'elsa@gmail.com', password: '223456')
-pierre = User.create(first_name: 'Pierre', last_name: 'Riedinger', email: 'pierre@gmail.com', password: '123456')
-vincent = User.create(first_name: 'Vincent', last_name: 'Huché', email: 'vincent@gmail.com', password: '423456')
-mathilde = User.create(first_name: 'Mathilde', last_name: 'Robert', email: 'mathilde@gmail.com', password: '523456')
+victor = User.create(first_name: 'Victor', last_name: 'Branger', email: 'victor@gmail.com', password: '123456', rating: 4.6)
+elsa = User.create(first_name: 'Elsa', last_name: 'Lebas', email: 'elsa@gmail.com', password: '223456', rating: 4.8)
+pierre = User.create(first_name: 'Pierre', last_name: 'Riedinger', email: 'pierre@gmail.com', password: '123456', rating: 4.1)
+vincent = User.create(first_name: 'Vincent', last_name: 'Huché', email: 'vincent@gmail.com', password: '423456', rating: 4.3)
+mathilde = User.create(first_name: 'Mathilde', last_name: 'Robert', email: 'mathilde@gmail.com', password: '523456', rating: 4.5)
 
 puts "Adding photos to users"
 victor.photo.attach(io: victor_photo, filename: 'victor.jpeg', content_type: 'image/jpeg')
