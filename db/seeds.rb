@@ -50,7 +50,7 @@ cannes_st_tropez = { boat_name:'Zodiac', boat_type: 'Sailboat', start_location: 
 dunkerque_la_corogne = { boat_name:'Adonis', boat_type: 'Sailboat', start_location: 'Dunkerque', arrival_location: 'La Corogne', start_date: '01/07/2020', arrival_date: '20/12/2020', price: 800, capacity: '1', user_id: victor.id }
 
 bookings1 = [{ user_id: elsa.id, start_time: '15/09/2018', end_time: '19/08/2018'}]
-bookings2 = [{ user_id: pierre.id, start_time: '15/04/2021', end_time: '20/04/2021'}]
+bookings2 = [{ user_id: victor.id, start_time: '15/04/2021', end_time: '20/04/2021'}]
 bookings3 = [{ user_id: mathilde.id, start_time: '15/09/2021', end_time: '19/09/2021'}, { user_id: pierre.id, start_time: '10/09/2021', end_time: '21/09/2021'}]
 
 [[marseille_ajaccio, boat1, bookings1], [ajaccio_marseille, boat2], [brest_nice, boat3], [nantes_newyork, boat4, bookings2], [cannes_st_tropez, boat5, bookings3], [dunkerque_la_corogne, boat6]].each_with_index do |attributes, index|

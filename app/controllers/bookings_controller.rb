@@ -34,7 +34,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.update(validated: true)
     @booking.conveying.update(booked: true)
-    redirect_to dashboard_path
+    redirect_to dashboard_path, notice: "Skipper booked!"
   end
 
   private
