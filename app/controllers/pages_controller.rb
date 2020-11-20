@@ -5,7 +5,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    @conveyings = Conveying.where(user_id: @user.id)
+    @conveyings = Conveying.where(user_id: @user.id, booked: false).order(arrival_date: :asc)
     @bookings = Booking.where(user_id: @user.id)
 
 
