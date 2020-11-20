@@ -1,109 +1,111 @@
-<div class="container">
-  <h1>My dashboard</h1>
+<div class="content-wrapper">
+  <div class="container">
+    <h1>My dashboard</h1>
 
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <a class="nav-link active" id="requests-tab" data-toggle="tab" href="#requests" role="tab" aria-controls="requests" aria-selected="true">Requests</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a class="nav-link" id="my_conveyings-tab" data-toggle="tab" href="#my_conveyings" role="tab" aria-controls="my_conveyings" aria-selected="false">My conveyings</a>
-    </li>
-  </ul>
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="requests" role="tabpanel" aria-labelledby="requests-tab">
-      <% @conveyings.each do |conveying| %>
-        <div class="conveying-card d-flex p-3 my-3 border justify-content-between align-items-center rounded shadow">
-          <%= cl_image_tag conveying.photos.first.key, width: 100, height: 50 %>
-          <div class="flex-grow-1 ml-3">
-            <h4><%= conveying.start_location %> > <%= conveying.arrival_location %></h4>
-            <p>before <%= conveying.arrival_date.strftime("%B %d, %Y") %></p>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="requests-tab" data-toggle="tab" href="#requests" role="tab" aria-controls="requests" aria-selected="true">Requests</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="my_conveyings-tab" data-toggle="tab" href="#my_conveyings" role="tab" aria-controls="my_conveyings" aria-selected="false">My conveyings</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="requests" role="tabpanel" aria-labelledby="requests-tab">
+        <% @conveyings.each do |conveying| %>
+          <div class="conveying-card d-flex p-3 my-3 border justify-content-between align-items-center rounded shadow">
+            <%= cl_image_tag conveying.photos.first.key, width: 100, height: 50 %>
+            <div class="flex-grow-1 ml-3">
+              <h4><%= conveying.start_location %> > <%= conveying.arrival_location %></h4>
+              <p>before <%= conveying.arrival_date.strftime("%B %d, %Y") %></p>
+            </div>
+            <% if conveying.booking_ids.count.zero? %>
+              <p><em>No request</em></p>
+            <% else %>
+              <p class="badge badge-pill badge-primary p-2"><strong><%= pluralize conveying.booking_ids.count, 'request', plural: 'requests' %> pending</strong></p>
+            <% end %>
+
           </div>
-          <% if conveying.booking_ids.count.zero? %>
-            <p><em>No request</em></p>
-          <% else %>
-            <p class="badge badge-pill badge-primary p-2"><strong><%= pluralize conveying.booking_ids.count, 'request', plural: 'requests' %> pending</strong></p>
-          <% end %>
-          
-        </div>
 
-        <div class="row">
-          <% conveying.booking_ids.each do |booking_id| %>
-            <div class="col-4">
-              <div class="card skipper-card">
-                <%= cl_image_tag Booking.find(booking_id).user.photo.key, width: 250, height: 150 %>
-                <div class="p-3">
-                  <div class="d-flex justify-content-between">
-                    <h2><%= Booking.find(booking_id).user.first_name %> <%= Booking.find(booking_id).user.last_name %></h2>
-                    <h2><%= Booking.find(booking_id).user.rating %> <i class="fas fa-star"></i></h2>
-                  </div>
-                  <p>from <%= Booking.find(booking_id).start_time.strftime("%B %d, %Y") %> > <%= Booking.find(booking_id).start_time.strftime("%B %d, %Y") %></p>
-                  <div class="d-flex justify-content-end">
-                    <%= link_to "Accept", booking_accept_path(booking_id), class: "btn btn-success btn-sm mr-3" %>
-                    <%= link_to "Decline", booking_path(booking_id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+          <div class="row">
+            <% conveying.booking_ids.each do |booking_id| %>
+              <div class="col-4">
+                <div class="card skipper-card">
+                  <%= cl_image_tag Booking.find(booking_id).user.photo.key, width: 250, height: 150 %>
+                  <div class="p-3">
+                    <div class="d-flex justify-content-between">
+                      <h2><%= Booking.find(booking_id).user.first_name %> <%= Booking.find(booking_id).user.last_name %></h2>
+                      <h2><%= Booking.find(booking_id).user.rating %> <i class="fas fa-star"></i></h2>
+                    </div>
+                    <p>from <%= Booking.find(booking_id).start_time.strftime("%B %d, %Y") %> > <%= Booking.find(booking_id).start_time.strftime("%B %d, %Y") %></p>
+                    <div class="d-flex justify-content-end">
+                      <%= link_to "Accept", booking_accept_path(booking_id), class: "btn btn-success btn-sm mr-3" %>
+                      <%= link_to "Decline", booking_path(booking_id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="tab-pane fade" id="my_conveyings" role="tabpanel" aria-labelledby="my_conveyings-tab">
-      
-      <h3 class="mt-3">Upcoming</h3>
-      <% @upcoming_conveyings.each do |conveying| %>
-        <div class="conveying-card d-flex p my-3 border justify-content-between align-items-center rounded shadow">
-          <%= cl_image_tag conveying.photos.first.key, width: 300, height: 150 %>
-          <div class="flex-grow-1 ml-3 my-3">
-            <h4><%= conveying.start_location %> > <%= conveying.arrival_location %></h4>
-            <p><%= Booking.find(conveying.booking_ids[0]).start_time.strftime("%B %d, %Y") %> > <%= Booking.find(conveying.booking_ids[0]).start_time.strftime("%B %d, %Y") %></p>
-          </div>
-          <div class="d-block mr-3 align-items-center text-center" style="min-width: 150px;">
-            <%= cl_image_tag Booking.find(conveying.booking_ids[0]).user.photo.key, width: 75, height: 75, class: "rounded-circle" %>
-            <p class="text-center"><%= Booking.find(conveying.booking_ids[0]).user.first_name %> <%= Booking.find(conveying.booking_ids[0]).user.last_name %></p>
-            <p class="text-center"><span class="badge badge-pill badge-success">upcoming</span></p>
-          </div>
-        </div> 
-      <% end %>
-
-      <h3 class="mt-3">Pending</h3>
-      <% @pending_conveyings.each do |conveying| %>
-        <div class="conveying-card d-flex p my-3 border justify-content-between align-items-center rounded shadow">
-          <%= cl_image_tag conveying.photos.first.key, width: 300, height: 150 %>
-          <div class="flex-grow-1 ml-3 my-3">
-            <h4><%= conveying.start_location %> > <%= conveying.arrival_location %></h4>
-            <p><%= conveying.start_date.strftime("%B %d, %Y") %> > <%= conveying.arrival_date.strftime("%B %d, %Y") %></p>
-          </div>
-          <div class="d-block mr-3 align-items-end" style="min-width: 150px;">
-            <p class="text-center"><span class="badge badge-pill badge-warning">pending</span></p>
-          </div>
-        </div>
-      <% end %>
-
-      <h3 class="mt-3">Past</h3>
-      <% @past_conveyings.each do |conveying| %>
-        <div class="conveying-card d-flex p my-3 border justify-content-between align-items-center rounded shadow">
-          <%= cl_image_tag conveying.photos.first.key, width: 300, height: 150 %>
-          <div class="flex-grow-1 ml-3 my-3">
-            <h4><%= conveying.start_location %> > <%= conveying.arrival_location %></h4>
-              <% if conveying.booked %>
-                <p><%= Booking.find(conveying.booking_ids[0]).start_time.strftime("%B %d, %Y") %> > <%= Booking.find(conveying.booking_ids[0]).start_time.strftime("%B %d, %Y") %></p>
-              <% else %>
-                <p><%= conveying.start_date.strftime("%B %d, %Y") %> > <%= conveying.arrival_date.strftime("%B %d, %Y") %></p>
-              <% end %>
-          </div>
-          <div class="d-block mr-3 align-items-center text-center" style="min-width: 150px;">
-            <% if conveying.booked %>
-              <%= cl_image_tag Booking.find(conveying.booking_ids[0]).user.photo.key, width: 75, height: 75, class: "rounded-circle" %>
-              <p class="text-center"><%= Booking.find(conveying.booking_ids[0]).user.first_name %> <%= Booking.find(conveying.booking_ids[0]).user.last_name %></p>
-              <p class="text-center"><span class="badge badge-pill badge-primary">done</span></p>
-            <% else %>
-              <p class="text-center"><span class="badge badge-pill badge-warning">cancelled</span></p>
             <% end %>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+
+      <div class="tab-pane fade" id="my_conveyings" role="tabpanel" aria-labelledby="my_conveyings-tab">
+
+        <h3 class="mt-3">Upcoming</h3>
+        <% @upcoming_conveyings.each do |conveying| %>
+          <div class="conveying-card d-flex p my-3 border justify-content-between align-items-center rounded shadow">
+            <%= cl_image_tag conveying.photos.first.key, width: 300, height: 150 %>
+            <div class="flex-grow-1 ml-3 my-3">
+              <h4><%= conveying.start_location %> > <%= conveying.arrival_location %></h4>
+              <p><%= Booking.find(conveying.booking_ids[0]).start_time.strftime("%B %d, %Y") %> > <%= Booking.find(conveying.booking_ids[0]).start_time.strftime("%B %d, %Y") %></p>
+            </div>
+            <div class="d-block mr-3 align-items-center text-center" style="min-width: 150px;">
+              <%= cl_image_tag Booking.find(conveying.booking_ids[0]).user.photo.key, width: 75, height: 75, class: "rounded-circle" %>
+              <p class="text-center"><%= Booking.find(conveying.booking_ids[0]).user.first_name %> <%= Booking.find(conveying.booking_ids[0]).user.last_name %></p>
+              <p class="text-center"><span class="badge badge-pill badge-success">upcoming</span></p>
+            </div>
+          </div>
+        <% end %>
+
+        <h3 class="mt-3">Pending</h3>
+        <% @pending_conveyings.each do |conveying| %>
+          <div class="conveying-card d-flex p my-3 border justify-content-between align-items-center rounded shadow">
+            <%= cl_image_tag conveying.photos.first.key, width: 300, height: 150 %>
+            <div class="flex-grow-1 ml-3 my-3">
+              <h4><%= conveying.start_location %> > <%= conveying.arrival_location %></h4>
+              <p><%= conveying.start_date.strftime("%B %d, %Y") %> > <%= conveying.arrival_date.strftime("%B %d, %Y") %></p>
+            </div>
+            <div class="d-block mr-3 align-items-end" style="min-width: 150px;">
+              <p class="text-center"><span class="badge badge-pill badge-warning">pending</span></p>
+            </div>
+          </div>
+        <% end %>
+
+        <h3 class="mt-3">Past</h3>
+        <% @past_conveyings.each do |conveying| %>
+          <div class="conveying-card d-flex p my-3 border justify-content-between align-items-center rounded shadow">
+            <%= cl_image_tag conveying.photos.first.key, width: 300, height: 150 %>
+            <div class="flex-grow-1 ml-3 my-3">
+              <h4><%= conveying.start_location %> > <%= conveying.arrival_location %></h4>
+                <% if conveying.booked %>
+                  <p><%= Booking.find(conveying.booking_ids[0]).start_time.strftime("%B %d, %Y") %> > <%= Booking.find(conveying.booking_ids[0]).start_time.strftime("%B %d, %Y") %></p>
+                <% else %>
+                  <p><%= conveying.start_date.strftime("%B %d, %Y") %> > <%= conveying.arrival_date.strftime("%B %d, %Y") %></p>
+                <% end %>
+            </div>
+            <div class="d-block mr-3 align-items-center text-center" style="min-width: 150px;">
+              <% if conveying.booked %>
+                <%= cl_image_tag Booking.find(conveying.booking_ids[0]).user.photo.key, width: 75, height: 75, class: "rounded-circle" %>
+                <p class="text-center"><%= Booking.find(conveying.booking_ids[0]).user.first_name %> <%= Booking.find(conveying.booking_ids[0]).user.last_name %></p>
+                <p class="text-center"><span class="badge badge-pill badge-primary">done</span></p>
+              <% else %>
+                <p class="text-center"><span class="badge badge-pill badge-warning">cancelled</span></p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
