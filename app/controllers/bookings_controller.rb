@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     @booking.conveying = @conveying
     authorize @booking
     if @booking.save
-      redirect_to conveying_path(@conveying), notice: "Booking created"
+      redirect_to conveying_path(@conveying), notice: "Your booking created !"
     else
       render 'conveyings/show'
     end
@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking
     @booking.destroy
-    redirect_to dashboard_path, notice: "Booking was deleted"
+    redirect_to dashboard_path, notice: "You booking was deleted !"
   end
 
   private
