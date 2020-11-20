@@ -42,11 +42,11 @@ mathilde.photo.attach(io: mathilde_photo, filename: 'mathilde.jpeg', content_typ
 puts "Users' photos added"
 
 puts "Creating conveyings..."
-marseille_ajaccio = { boat_name:'Titanic', boat_type: 'Yacht', start_location: 'Marseille', arrival_location: 'Ajaccio', start_date: '01/8/2017', arrival_date: '20/08/2018', price: 100, capacity: '2', user_id: victor.id, booked: true }
-ajaccio_marseille = { boat_name:'Bigboat', boat_type: 'Motorboat', start_location: 'Ajaccio', arrival_location: 'Marseille', start_date: '15/08/2019', arrival_date: '17/08/2019', price: 100, capacity: '2', user_id: victor.id }
+marseille_ajaccio = { boat_name:'Titanic', boat_type: 'Yacht', start_location: 'Marseille', arrival_location: 'Ajaccio', start_date: '01/8/2017', arrival_date: '20/08/2018', price: 100, capacity: '2', user_id: vincent.id, booked: true }
+ajaccio_marseille = { boat_name:'Titanic', boat_type: 'Yacht', start_location: 'Ajaccio', arrival_location: 'Marseille', start_date: '15/08/2019', arrival_date: '17/08/2019', price: 100, capacity: '2', user_id: vincent.id }
 brest_nice = { boat_name:'Black Pearl', boat_type: 'Motorboat', start_location: 'Brest', arrival_location: 'Nice', start_date: '01/07/2021', arrival_date: '20/07/2021', price: 500, capacity: '4', user_id: victor.id }
-nantes_newyork = { boat_name:'Crazy Boat', boat_type: 'Sailboat', start_location: 'Saint-Nazaire', arrival_location: 'New York', start_date: '01/04/2021', arrival_date: '01/05/2021', price: 1000, capacity: '5', user_id: victor.id, booked: true }
-cannes_st_tropez = { boat_name:'Zodiac', boat_type: 'Sailboat', start_location: 'Cannes', arrival_location: 'St Tropez', start_date: '01/09/2021', arrival_date: '30/09/2021', price: 90, capacity: 1, user_id: victor.id }
+nantes_newyork = { boat_name:'Crazy Boat', boat_type: 'Sailboat', start_location: 'Saint-Nazaire', arrival_location: 'New York', start_date: '01/04/2021', arrival_date: '01/05/2021', price: 1000, capacity: '5', user_id: vincent.id, booked: true }
+cannes_st_tropez = { boat_name:'Zodiac', boat_type: 'Sailboat', start_location: 'Cannes', arrival_location: 'St Tropez', start_date: '01/09/2021', arrival_date: '30/09/2021', price: 90, capacity: 1, user_id: vincent.id }
 dunkerque_la_corogne = { boat_name:'Adonis', boat_type: 'Sailboat', start_location: 'Dunkerque', arrival_location: 'La Corogne', start_date: '01/07/2020', arrival_date: '20/12/2020', price: 800, capacity: '1', user_id: victor.id }
 
 bookings1 = [{ user_id: elsa.id, start_time: '15/09/2018', end_time: '19/08/2018'}]
