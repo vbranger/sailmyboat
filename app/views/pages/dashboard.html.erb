@@ -18,7 +18,12 @@
             <h4><%= conveying.start_location %> > <%= conveying.arrival_location %></h4>
             <p>before <%= conveying.arrival_date.strftime("%B %d, %Y") %></p>
           </div>
-          <p><strong><%= conveying.booking_ids.count %> requests pending</strong></p>
+          <% if conveying.booking_ids.count.zero? %>
+            <p><em>No request</em></p>
+          <% else %>
+            <p><strong><%= pluralize conveying.booking_ids.count, 'request', plural: 'requests' %> pending</strong></p>
+          <% end %>
+          
         </div>
 
         <div class="row">
