@@ -36,7 +36,7 @@ class ConveyingsController < ApplicationController
     authorize @conveying
 
     if @conveying.save
-      redirect_to @conveying, notice: "Conveying was created"
+      redirect_to @conveying, notice: "Your conveying was created !"
     else
       render :new
     end
@@ -51,14 +51,14 @@ class ConveyingsController < ApplicationController
     @conveying = Conveying.find(params[:id])
     authorize @conveying
     @conveying.update(conveying_params)
-    redirect_to @conveying, notice: "Conveying was updated"
+    redirect_to @conveying, notice: "Your conveying was updated !"
   end
 
   def destroy
     @conveying = Conveying.find(params[:id])
     authorize @conveying
     @conveying.destroy
-    redirect_to dashboard_path, notice: "Conveying was deleted"
+    redirect_to dashboard_path, notice: "Your conveying was deleted !"
   end
 
   private
