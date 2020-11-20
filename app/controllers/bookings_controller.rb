@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to conveying_path(@conveying), notice: "Booking created"
     else
-      render :new
+      render 'conveyings/show'
     end
   end
 
